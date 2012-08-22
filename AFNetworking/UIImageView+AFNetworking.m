@@ -110,7 +110,9 @@ static char kAFImageRequestOperationObjectKey;
             success(nil, nil, cachedImage);
         }
     } else {
-        self.image = placeholderImage;
+        if (placeholderImage != nil) {
+            self.image = placeholderImage;
+        }
         
         AFImageRequestOperation *requestOperation = [[[AFImageRequestOperation alloc] initWithRequest:urlRequest] autorelease];
         [requestOperation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
